@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="panel">
+
+    <h2>🚨 Security Alerts</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Severity</th>
+                <th>Alert Message</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for alert in alerts %}
+
+            <tr>
+
+                <td>{{ alert["id"] }}</td>
+
+                <td>
+
+                    {% if alert["severity"] == "CRITICAL" %}
+                        <span class="critical">
+                            🔴 CRITICAL
+                        </span>
+
+                    {% elif alert["severity"] == "MEDIUM" %}
+                        <span class="medium">
+                            🟡 MEDIUM
+                        </span>
+
+                    {% else %}
+                        {{ alert["severity"] }}
+                    {% endif %}
+
+                </td>
+
+                <td>{{ alert["message"] }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

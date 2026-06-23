@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIEM Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div class="wrapper" id="wrapper">
+
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <div class="logo">
+
+            🛡️ <span>SIEM</span>
+
+        </div>
+
+
+        <button class="toggle-btn" onclick="toggleSidebar()">
+
+            ☰
+
+        </button>
+
+
+
+        <ul class="menu">
+
+
+            <li>
+
+                <a href="/">
+
+                    📊 <span>Dashboard</span>
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                <a href="/logs">
+
+                    📜 <span>Logs</span>
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                <a href="/alerts">
+
+                    🚨 <span>Alerts</span>
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                <a href="/analytics">
+
+                    📈 <span>Analytics</span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+
+    </aside>
+
+
+
+
+
+    <main class="content" id="content">
+
+
+        <div class="topbar">
+
+
+            <h1>
+                Security Information & Event Management
+            </h1>
+
+
+        </div>
+
+
+
+        {% block content %}
+
+        {% endblock %}
+
+
+
+    </main>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+function toggleSidebar(){
+
+
+    let sidebar = document.getElementById("sidebar");
+
+    let content = document.getElementById("content");
+
+    let wrapper = document.getElementById("wrapper");
+
+
+    sidebar.classList.toggle("collapsed");
+
+    content.classList.toggle("expanded");
+
+
+}
+
+
+
+</script>
+
+
+
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+
+
+</body>
+
+</html>

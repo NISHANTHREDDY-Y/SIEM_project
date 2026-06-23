@@ -1,0 +1,613 @@
+/* =========================
+   GLOBAL SETTINGS
+========================= */
+
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background: #0b132b;
+
+    color: white;
+
+    overflow-x: hidden;
+
+}
+
+
+
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+
+.wrapper {
+
+    display: flex;
+
+    min-height: 100vh;
+
+}
+
+
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+
+.sidebar {
+
+
+    width:260px;
+
+    height:100vh;
+
+    background:#111827;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+
+    padding:25px 20px;
+
+
+    transition:0.3s ease;
+
+
+    overflow:hidden;
+
+
+    z-index:1000;
+
+
+}
+
+
+
+
+.sidebar.collapsed {
+
+
+    width:80px;
+
+
+}
+
+
+
+
+.logo {
+
+
+    font-size:25px;
+
+    font-weight:bold;
+
+
+    margin-bottom:50px;
+
+
+    white-space:nowrap;
+
+
+}
+
+
+
+
+.toggle-btn {
+
+
+    position:absolute;
+
+
+    top:20px;
+
+    right:15px;
+
+
+    background:none;
+
+
+    border:none;
+
+
+    color:white;
+
+
+    font-size:25px;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+/* MENU */
+
+
+.menu {
+
+
+    list-style:none;
+
+
+}
+
+
+
+.menu li {
+
+
+    margin:25px 0;
+
+
+}
+
+
+
+.menu a {
+
+
+    text-decoration:none;
+
+
+    color:white;
+
+
+    font-size:18px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    padding:12px;
+
+
+    border-radius:10px;
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+.menu a:hover {
+
+
+    background:#1e293b;
+
+
+}
+
+
+
+
+
+.sidebar.collapsed span {
+
+
+    display:none;
+
+
+}
+
+
+
+
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+
+.content {
+
+
+    margin-left:260px;
+
+
+    width:calc(100% - 260px);
+
+
+    padding:30px;
+
+
+    transition:0.3s ease;
+
+
+}
+
+
+
+
+
+.content.expanded {
+
+
+    margin-left:80px;
+
+
+    width:calc(100% - 80px);
+
+
+}
+
+
+
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+
+.topbar {
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+.topbar h1 {
+
+
+    font-size:38px;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+
+.cards {
+
+
+    display:flex;
+
+
+    gap:30px;
+
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+.card {
+
+
+    background:#1e293b;
+
+
+    width:240px;
+
+
+    padding:25px;
+
+
+    border-radius:18px;
+
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+
+
+}
+
+
+
+.card h2 {
+
+
+    font-size:40px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+.card p {
+
+
+    color:#cbd5e1;
+
+
+    font-size:18px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   TABLES
+========================= */
+
+
+.table-container {
+
+
+    width:100%;
+
+
+    overflow-x:auto;
+
+
+    background:#111827;
+
+
+    border-radius:15px;
+
+
+    padding:15px;
+
+
+}
+
+
+
+
+
+table {
+
+
+    width:100%;
+
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+thead {
+
+
+    background:#0284c7;
+
+
+}
+
+
+
+th {
+
+
+    padding:18px;
+
+
+    text-align:left;
+
+
+    font-size:17px;
+
+
+}
+
+
+
+td {
+
+
+    padding:16px;
+
+
+    border-bottom:1px solid #334155;
+
+
+}
+
+
+
+
+tr:nth-child(even){
+
+
+    background:#1e293b;
+
+
+}
+
+
+
+
+
+
+/* =========================
+   CHART AREA
+========================= */
+
+
+.chart-container {
+
+
+    width:80%;
+
+
+    max-width:900px;
+
+
+    height:400px;
+
+
+    margin-top:40px;
+
+
+    background:#111827;
+
+
+    padding:20px;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+
+canvas {
+
+
+    max-height:350px !important;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   ALERT BOXES
+========================= */
+
+
+.alert {
+
+
+    padding:15px;
+
+
+    border-radius:10px;
+
+
+    margin:15px 0;
+
+
+}
+
+
+
+
+.critical {
+
+
+    background:#dc2626;
+
+
+}
+
+
+
+.warning {
+
+
+    background:#f59e0b;
+
+
+}
+
+
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+
+@media(max-width:900px){
+
+
+    .sidebar{
+
+
+        width:80px;
+
+
+    }
+
+
+
+    .sidebar span{
+
+
+        display:none;
+
+
+    }
+
+
+
+
+    .content{
+
+
+        margin-left:80px;
+
+
+        width:calc(100% - 80px);
+
+
+    }
+
+
+
+    .topbar h1{
+
+
+        font-size:25px;
+
+
+    }
+
+
+}

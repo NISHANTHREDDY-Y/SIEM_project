@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="cards">
+
+    <div class="card">
+        <h2>{{ total_logs }}</h2>
+        <p>Total Logs</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ total_alerts }}</h2>
+        <p>Alerts</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ users }}</h2>
+        <p>Users</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ sources }}</h2>
+        <p>Sources</p>
+    </div>
+
+</div>
+
+<div class="dashboard-grid">
+
+    <div class="panel">
+
+        <h2>🚨 Recent Alerts</h2>
+
+        <div class="scroll-box">
+
+            {% if alerts %}
+
+                {% for alert in alerts %}
+
+                <div class="alert-item">
+
+                    <strong>{{ alert["severity"] }}</strong>
+
+                    <br>
+
+                    {{ alert["message"] }}
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No alerts detected.</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <h2>📈 Security Analytics</h2>
+
+        <canvas id="logsChart"></canvas>
+
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <h2>📜 Recent Logs</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Timestamp</th>
+                <th>Event</th>
+                <th>User</th>
+                <th>Source</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for log in logs %}
+
+            <tr>
+
+                <td>{{ log["id"] }}</td>
+                <td>{{ log["timestamp"] }}</td>
+                <td>{{ log["event_type"] }}</td>
+                <td>{{ log["username"] }}</td>
+                <td>{{ log["source"] }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
